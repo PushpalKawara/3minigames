@@ -3,11 +3,14 @@ const ctx = canvas.getContext('2d');
 const gridSize = 20;
 let snake, food, direction, score, gameLoop;
 
+let startX, startY;
+
 function startGame() {
     snake = [{x: 10, y: 10}];
     food = {};
     direction = 'right';
     score = 0;
+    document.getElementById('score').textContent = `Score: ${score}`;
     clearInterval(gameLoop);
     generateFood();
     gameLoop = setInterval(draw, 100);
@@ -42,6 +45,7 @@ function draw() {
     // Check for eating food
     if (head.x === food.x && head.y === food.y) {
         score++;
+        document.getElementById('score').textContent = `Score: ${score}`;
         generateFood();
     } else {
         snake.pop();
@@ -65,10 +69,27 @@ function endGame() {
     alert('Game Over! Your score: ' + score);
 }
 
-document.addEventListener('keydown', e => {
-    const key = e.key;
-    if (key === 'ArrowUp' && direction !== 'down') direction = 'up';
-    if (key === 'ArrowDown' && direction !== 'up') direction = 'down';
-    if (key === 'ArrowLeft' && direction !== 'right') direction = 'left';
-    if (key === 'ArrowRight' && direction !== 'left') direction = 'right';
+// Mobile Touch Controls
+canvas.addEventListener('touchstart', e => {
+    e.preventDefault();
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+});
+
+canvas.addEventListener('touchend', e => {
+    e.preventDefault();
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+    const diffX = endX - startX;
+    const diffY = endY - startY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        // Horizontal swipe
+        if (diffX > 0 && direction !== 'left') direction = 'right';
+        else if (diffX < 0 && direction !== 'right') direction = 'left';
+    } else {
+        // Vertical swipe
+        if (diffY > 0 && direction !== 'up') direction = 'down';
+        else if (diffY < 0 && direction !== 'down') direction = 'up';
+    }
 });
