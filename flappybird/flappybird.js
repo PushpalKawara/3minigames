@@ -12,9 +12,13 @@ function startGame() {
     birdVelocity = 0;
     pipes = [];
     score = 0;
+    document.getElementById('score').textContent = `Score: ${score}`;
     clearInterval(gameLoop);
     gameLoop = setInterval(game, 20);
+    // Add event listeners for both desktop and mobile
     document.addEventListener('keydown', flap);
+    canvas.addEventListener('touchstart', flap);
+    
     pipes.push({ x: canvas.width, y: Math.random() * (canvas.height - pipeGap) });
 }
 
@@ -52,9 +56,10 @@ function game() {
         }
         
         // Score
-        if (p.x === 50) {
+        if (p.x + pipeWidth < 50 && p.passed === undefined) {
             score++;
-            console.log(score);
+            p.passed = true;
+            document.getElementById('score').textContent = `Score: ${score}`;
         }
     }
 
@@ -66,7 +71,9 @@ function game() {
 }
 
 function flap(e) {
-    if (e.key === ' ' || e.key === 'ArrowUp') {
+    if (e.type === 'keydown' && (e.key === ' ' || e.key === 'ArrowUp')) {
+        birdVelocity = jumpStrength;
+    } else if (e.type === 'touchstart') {
         birdVelocity = jumpStrength;
     }
 }
@@ -75,4 +82,5 @@ function endGame() {
     clearInterval(gameLoop);
     alert('Game Over! Score: ' + score);
     document.removeEventListener('keydown', flap);
+    canvas.removeEventListener('touchstart', flap);
 }
