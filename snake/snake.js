@@ -1,0 +1,74 @@
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const gridSize = 20;
+let snake, food, direction, score, gameLoop;
+
+function startGame() {
+    snake = [{x: 10, y: 10}];
+    food = {};
+    direction = 'right';
+    score = 0;
+    clearInterval(gameLoop);
+    generateFood();
+    gameLoop = setInterval(draw, 100);
+}
+
+function generateFood() {
+    food = {
+        x: Math.floor(Math.random() * (canvas.width / gridSize)),
+        y: Math.floor(Math.random() * (canvas.height / gridSize))
+    };
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Draw food
+    ctx.fillStyle = 'red';
+    ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+    // Move snake
+    const head = {x: snake[0].x, y: snake[0].y};
+    if (direction === 'right') head.x++;
+    if (direction === 'left') head.x--;
+    if (direction === 'up') head.y--;
+    if (direction === 'down') head.y++;
+    snake.unshift(head);
+
+    // Check for collision with walls or self
+    if (head.x < 0 || head.x >= canvas.width / gridSize || head.y < 0 || head.y >= canvas.height / gridSize || checkSelfCollision()) {
+        endGame();
+        return;
+    }
+
+    // Check for eating food
+    if (head.x === food.x && head.y === food.y) {
+        score++;
+        generateFood();
+    } else {
+        snake.pop();
+    }
+    // Draw snake
+    ctx.fillStyle = 'lime';
+    snake.forEach(segment => ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize));
+}
+
+function checkSelfCollision() {
+    for (let i = 1; i < snake.length; i++) {
+        if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function endGame() {
+    clearInterval(gameLoop);
+    alert('Game Over! Your score: ' + score);
+}
+
+document.addEventListener('keydown', e => {
+    const key = e.key;
+    if (key === 'ArrowUp' && direction !== 'down') direction = 'up';
+    if (key === 'ArrowDown' && direction !== 'up') direction = 'down';
+    if (key === 'ArrowLeft' && direction !== 'right') direction = 'left';
+    if (key === 'ArrowRight' && direction !== 'left') direction = 'right';
+});
