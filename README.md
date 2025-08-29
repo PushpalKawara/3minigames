@@ -1,31 +1,124 @@
-# 3minigames
+# 🎮 Unified Game Analytics Dashboard – 3-in-1 Tool  
+*(Drop-Off | Retention | Ad Metrics)*  
 
-# Mini-Games Collection
+> 🚀 A personal project by [Pushpal Kawara](mailto:pushpalkawara21@gmail.com)  
+> 🔒 **Private Repository – Access by Permission Only**  
 
-A collection of five simple, offline-playable mini-games built with HTML, CSS, and JavaScript. This project is designed to be easily accessible and playable directly from a mobile browser.
+---
 
-## Games Included:
+## ✨ Highlights  
 
-1.  **Snake:** Navigate a snake to eat food and grow longer.
-2.  **Tic-Tac-Toe:** A classic two-player game on a 3x3 grid.
-3.  **Memory Match:** Flip cards to find matching pairs.
-4.  **2048:** Slide tiles to merge them and reach the 2048 tile.
-5.  **Flappy Bird:** Tap to make the bird fly and avoid pipes.
+- 📉 **Drop-Off Analysis** – Detect where players quit  
+- 🔁 **Retention Tracking** – Measure returning users  
+- 📊 **Ad Event Metrics** – Track in-game ad performance  
+- ⚡ **Automated Insights** – Replace manual Excel reports  
+- 🎯 **3 Dashboards in 1** – Switch between tools seamlessly  
+- 🛡️ **Local & Secure** – Runs fully offline  
 
-## Features:
+---
 
-* **Offline Play:** Once loaded, all games are fully functional without an internet connection.
-* **Mobile-Ready:** Optimized for use on mobile devices.
-* **Simple Navigation:** A central home screen allows you to choose and play any game, with a "Back to Home" button on each game page.
-* **Extendable:** The project structure makes it easy to add more games in the future.
+## 📌 Overview  
 
-## How to Use:
+The **Unified Game Analytics Dashboard (3-in-1 Tool)** is an **all-in-one solution** to analyze and visualize player behavior across **levels, events, and game stages**.  
 
-1.  **Create a Repository:** On your mobile device, create a new public GitHub repository.
-2.  **Add Files:** Add the files and folders as structured in the repository. You can do this directly on the GitHub website or using a mobile code editor app.
-3.  **Enable GitHub Pages:** Go to your repository's **Settings** -> **Pages**. Select the `main` branch and `/ (root)` folder, then click **Save**.
-4.  **Play:** Your games will be live at a URL like `https://your-username.github.io/your-repo-name`. Share this link and enjoy!
+This **Streamlit-powered toolkit** combines **three dashboards into one interface**:  
 
-## Adding New Games:
+1. 📊 **Daily Progression Game Metrics Dashboard** – Analyze retention & ad event impact  
+2. 🎮 **Game Progression Dashboard** – Track stage-level player movement & bottlenecks  
+3. 📉 **All Game Levels Analyzer** – Deep dive into drop-off & retention curves  
 
-To add a new game, simply create a new folder inside the main directory (e.g., `newgame/`), place your HTML, CSS, and JS files inside, and then add a new link to `index.html`.
+> Inspired by my work as a **Game Analyst Intern**, I created this to automate repetitive tasks and provide actionable insights in minutes instead of hours.  
+
+⚠️ *Note: No company data or assets were used. This is a personal project built purely for learning & demo purposes.*  
+
+---
+
+## 📸 Dashboard Preview  
+
+<p align="center">
+  <img src="assets/merged_dashboard_home.png" width="600"/>
+  <br><i>🧭 Choose between 3 tools from one interface</i>
+</p>
+
+<p align="center">
+  <img src="assets/retention_chart.png" width="600"/>
+  <br><i>🔁 Retention Curve Visualization</i>
+</p>
+
+<p align="center">
+  <img src="assets/stage_progress_chart.png" width="600"/>
+  <br><i>🎯 Game Progression Analysis</i>
+</p>
+
+---
+
+## 🛠 Tech Stack  
+
+- 🐍 **Python** – Core scripting & automation  
+- 📊 **Pandas** – Data wrangling & cleaning  
+- 📈 **Streamlit** – Interactive web-based dashboards  
+- 📉 **Plotly / Matplotlib** – Data visualization  
+- 📄 **OpenPyXL / CSV** – Excel file handling  
+
+---
+
+## 🎯 Key Features  
+
+✅ Upload Excel/CSV files directly  
+✅ Auto-calculates **drop-off & retention rates**  
+✅ Ad event monitoring module included  
+✅ Stage-wise breakdowns & insights  
+✅ **3 dashboards in 1** – switch via sidebar  
+✅ Clean, interactive visualizations  
+✅ Works fully offline – data never leaves your system  
+
+---
+
+## 🚦 Use Cases  
+
+- 🎮 **Game Analysts & Interns** – speed up reporting  
+- 🏢 **Studios & Developers** – identify problem levels quickly  
+- 📊 **Demo for recruiters/clients** – showcase data storytelling skills  
+- 📚 **Learning & Projects** – hands-on analytics practice  
+
+---
+
+## 🔐 Access & Usage Policy  
+
+This project is:  
+
+- 🔒 **Private & proprietary**  
+- 👤 **For personal demo & learning only**  
+- 🛑 **Do not redistribute, reuse, or publish without written permission**  
+
+📨 Contact me if you’d like access or a private walkthrough.  
+
+---
+
+## 👨‍💻 About Me  
+
+Hi! I’m **Pushpal Kawara**, a **Freelancer | Data Scientist | Automation & Data Analytics Professional** with **1 year of experience** in:  
+
+- 🎮 Game Data & Player Analytics  
+- 📊 Dashboards & Visualization (Excel, Streamlit)  
+- 🤖 Python Automation & Machine Learning  
+- 🗄️ SQL & Data Engineering  
+
+📍 Nagpur, Maharashtra, India  
+📧 [pushpalkawara21@gmail.com](mailto:pushpalkawara21@gmail.com)  
+🔗 [LinkedIn – Pushpal Kawara](https://www.linkedin.com/in/pushpal-kawara-29320537b/)  
+
+---
+
+## 📎 How to Run (Authorized Users Only)  
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/unified-game-analytics-dashboard.git
+cd unified-game-analytics-dashboard
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the dashboard
+streamlit run app.py
